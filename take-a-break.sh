@@ -1,8 +1,9 @@
-#!bin/bash
+#!/bin/bash
 
 # UPDATE CODE BELOW
 # declare all the programs you want to open when starting your workday
-declare -a programs_close=("Skype for Business" "Skype" "Microsoft Outlook" "Slack" "Microsoft Teams" "Cisco AnyConnect Secure Mobility Client" "Microsoft Word" "Microsoft Excel" "PowerPoint")
+declare -a programs_close=("Skype for Business" "Skype" "Microsoft Outlook" "Slack" "Microsoft Teams" "Visual Studio Code" "Google Chrome" "Cisco AnyConnect Secure Mobility Client")
+declare -a programs_open=("")
 
 # DO NOT UPDATE CODE BELOW
 # Unless you know what you are doing
@@ -20,11 +21,9 @@ progress_count=0
 for i in "${programs_close[@]}"
 do
    ((progress_count++))
-   osascript -e 'quit app "'"${i}"'"'
+   open -a ${i}
    ProgressBar ${progress_count} ${#programs_close[@]}
 done
 
-printf '\nEnjoy your free time!\n'
-
-
+printf '\nFinished!\n'
 

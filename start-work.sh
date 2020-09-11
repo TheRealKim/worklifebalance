@@ -2,7 +2,7 @@
 
 # UPDATE CODE BELOW
 # declare all the programs you want to open when starting your workday
-declare -a programs=("Skype for Business" "Skype" "Microsoft Outlook" "Slack" "Microsoft Teams" "Visual Studio Code" "Google Chrome")
+declare -a programs_open=("Skype for Business" "Skype" "Microsoft Outlook" "Slack" "Microsoft Teams" "Visual Studio Code" "Google Chrome" "Cisco AnyConnect Secure Mobility Client")
 
 # DO NOT UPDATE CODE BELOW
 # Unless you know what you are doing
@@ -13,16 +13,15 @@ function ProgressBar {
     _fill=$(printf "%${_done}s")
     _empty=$(printf "%${_left}s")
     printf "\rProgress : [${_fill// /#}${_empty// /-}] ${_progress}%%"
-
 }
 
 IFS=""
 progress_count=0
-for i in "${programs[@]}"
+for i in "${programs_open[@]}"
 do
    ((progress_count++))
    open -a ${i}
-   ProgressBar ${progress_count} ${#programs[@]}
+   ProgressBar ${progress_count} ${#programs_open[@]}
 done
 
 printf '\nFinished!\n'
